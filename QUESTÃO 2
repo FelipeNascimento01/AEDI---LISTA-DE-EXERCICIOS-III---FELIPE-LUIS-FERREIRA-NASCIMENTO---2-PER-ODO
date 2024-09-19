@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+void bubbleSortOptimizado(int arr[], int n) {
+    int temp, trocado;
+    for (int i = 0; i < n - 1; i++) {
+        trocado = 0;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                trocado = 1; // Indica que houve uma troca
+            }
+        }
+        if (!trocado) {
+            // Se nenhuma troca foi feita, o array já está ordenado
+            break;
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Digite a quantidade de números que você deseja ordenar: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Digite os números:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    bubbleSortOptimizado(arr, n);
+
+    printf("Números ordenados em ordem crescente:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
